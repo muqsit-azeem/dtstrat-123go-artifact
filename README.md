@@ -1,6 +1,5 @@
 This repository contains the scripts and setup for the evaluation for 1-2-3-Go!
 
-We will run more, possibly even much more, than needed
 ## Setup
 ```bash
 sudo apt install \
