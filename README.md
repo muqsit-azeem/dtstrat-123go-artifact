@@ -100,9 +100,6 @@ We will use benchexec to execute the runs. Please go through the file [benchexec
 The models in our benchmark set use 3 kinds of parameters: number of modules, variables, and both.
 Moreover, these parameters effect the model size and the time taken to solve it differently.
 We do not have time to execute extensive experiments, so we have run a smaller number to get the trend.
-The CAV submission draft was using the notions of small, medium, large, and huge.
-I would map them to less than 1 min, < 10 min, < 30 min, larger than 1 hr.
-
 N is the number of modules, and K is the variable.
 
 ### Setting the baselines
