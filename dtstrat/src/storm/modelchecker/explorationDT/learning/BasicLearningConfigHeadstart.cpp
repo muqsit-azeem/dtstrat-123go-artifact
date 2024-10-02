@@ -1,0 +1,165 @@
+//
+// Created by steffi on 05.01.22.
+//
+
+#include "storm/modelchecker/explorationDT/learning/BasicLearningConfigHeadstart.h"
+#include "storm/modelchecker/explorationDT/learning/BasicLearningConfig.h"
+#include "storm/modelchecker/explorationDT/heuristics/NonHeuristic.h"
+#include "storm/settings/modules/HeuristicLearningSettings.h"
+#include "storm/settings/modules/IOSettings.h"
+#include "storm/settings/SettingsManager.h"
+#include <mlpack/core.hpp>
+#include <mlpack/methods/decision_tree/decision_tree.hpp>
+#include <mlpack/methods/decision_tree/gini_gain.hpp>
+#include <mlpack/methods/decision_tree/best_binary_numeric_split.hpp>
+#include <mlpack/methods/decision_tree/all_categorical_split.hpp>
+#include <mlpack/methods/decision_tree/all_dimension_select.hpp>
+#include <armadillo>
+
+#include "storm/exceptions/NotSupportedException.h"
+
+namespace storm{
+namespace modelchecker {
+namespace dtstrat {
+
+std::string execs(const char *cmd) {
+    std::array<char, 128> buffer{};
+    std::string result;
+    std::unique_ptr < FILE, decltype(&pclose) > pipe(popen(cmd, "r"), pclose);
+    if (!pipe) {
+        throw std::runtime_error("popen() failed!");
+    }
+    while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+        result += buffer.data();
+    }
+    return result;
+}
+
+template<typename StateType, typename ValueType>
+BasicLearningConfigHeadstart<StateType, ValueType>::BasicLearningConfigHeadstart(double const& decisionEpsilon, int const& updateSteps, heuristicTypes const& heuristicType,
+                                                               exploration_detail_dt::BRTDPInformation<StateType, ValueType>& brtdpInformation, std::string const& filename)
+    : decisionEpsilon(decisionEpsilon), updateSteps(updateSteps), set(false), heuristicType(heuristicType), brtdpInformation(&brtdpInformation), LearningConfig<StateType>(brtdpInformation.getModelName()) {
+    if (heuristicType==heuristicTypes::dtcontrolDT) {
+        bool json=false;
+        if (filename.find("json") != std::string::npos) {
+            json=true;
+        }
+        exploration_detail_dt::ExplorationInformationDT<StateType, ValueType>& explorationInformation = brtdpInformation.getExplorationInformation();
+        LearningConfig<StateType>::heuristic = new DecisionTreeHeuristic<StateType, ValueType>(filename, &explorationInformation, 0.5, json);
+    } else if (heuristicType==heuristicTypes::mlpackDT) {
+        LearningConfig<StateType>::heuristic = new MLDecisionTreeHeuristic<StateType, ValueType>();
+    } else {
+        LearningConfig<StateType>::heuristic = new NonHeuristic<StateType>();
+    }
+}
+
+template<typename StateType, typename ValueType>
+bool BasicLearningConfigHeadstart<StateType, ValueType>::updateNow() {
+    if (updateSteps == -1) {
+        return false;
+    } else if (LearningConfig<StateType>::steps>0 && LearningConfig<StateType>::steps%updateSteps == 0) {
+        //STORM_PRINT(LearningConfig<StateType>::steps << " simulations so far.\n");
+        return true;
+    } else {
+        return false;
+    }
+}
+
+template<typename StateType, typename ValueType>
+void BasicLearningConfigHeadstart<StateType, ValueType>::update() {
+    if (updateNow()) {
+        if (heuristicType==heuristicTypes::dtcontrolDT) {
+            updateDtcontrol();
+        } else if (heuristicType==heuristicTypes::mlpackDT) {
+            updateMLPackDT();
+        }
+    }
+    step();
+}
+
+template<typename StateType, typename ValueType>
+void BasicLearningConfigHeadstart<StateType, ValueType>::resetSteps() {
+    LearningConfig<StateType>::steps = 0;
+}
+
+template<typename StateType, typename ValueType>
+void BasicLearningConfigHeadstart<StateType, ValueType>::step() {
+    LearningConfig<StateType>::steps++;
+}
+
+template<typename StateType, typename ValueType>
+void BasicLearningConfigHeadstart<StateType, ValueType>::updateMLPackDT() {
+    auto configSettings = storm::settings::getModule<storm::settings::modules::HeuristicLearningSettings>();
+    bool onlyReachable = configSettings.getOnlyReachable();
+    arma::Row<long unsigned int> labels;
+    arma::Mat<int> data;
+    if (onlyReachable) {
+        data = brtdpInformation->forwardPassStateValuations(labels);
+    } else {
+        data = brtdpInformation->getTransformedStateValuations(labels);
+    }
+    arma::mat double_data = arma::conv_to<arma::mat>::from(data);
+    //arma::Row<long unsigned int> uniqueActions = arma::unique(labels);
+    //mlpack::tree::DecisionTree<mlpack::tree::GiniGain,mlpack::tree::BestBinaryNumericSplit,mlpack::tree::AllCategoricalSplit,mlpack::tree::AllDimensionSelect, double,false> test_tree(double_data, labels, brtdpInformation->getNumberOfActions(), 1);
+    LearningConfig<StateType>::heuristic = new MLDecisionTreeHeuristic<StateType, ValueType>(double_data, labels, brtdpInformation->getNumberOfActions(), (brtdpInformation->getExplorationInformation()), decisionEpsilon);
+}
+
+template<typename StateType, typename ValueType>
+void BasicLearningConfigHeadstart<StateType, ValueType>::updateDtcontrol() {
+    auto configSettings = storm::settings::getModule<storm::settings::modules::HeuristicLearningSettings>();
+    bool onlyReachable = configSettings.getOnlyReachable();
+    // Output the file
+    std::string fileName = brtdpInformation->getModelName() + ".csv";
+    std::ofstream ofs(fileName, std::ofstream::trunc);
+    brtdpInformation->printDTcontrolHeader(ofs, false);
+    brtdpInformation->printData(ofs, nullptr, onlyReachable);
+    ofs.close();
+
+    // call DTcontrol
+    std::string jsonString = callDTcontrol(fileName);
+    ofs = std::ofstream("DTControl.json");
+    ofs << jsonString;
+    ofs.close();
+
+    // get the new decision tree
+    LearningConfig<StateType>::heuristic = getNewDT(jsonString, true);
+}
+
+template<typename StateType, typename ValueType>
+std::string BasicLearningConfigHeadstart<StateType, ValueType>::callDTcontrol(std::string const& fileName) const {
+    std::string cmd = ". venv/bin/activate; "
+        "dtcontrol "
+        "--input " + fileName +
+        " --use-preset minnorm "
+        "--output stdout:json "
+        "--rerun "
+        "2>\\dev\\null";
+    const char *run_cmd = cmd.c_str();
+    const std::string &result = execs(run_cmd);
+    STORM_LOG_ASSERT(result != "", "dtcontrol not installed? : \nPlease run the following commands"
+                     " to install dtcontrol in the \"Working directory\" of storm:\n"
+                     "#   python -m venv venv\n"
+                     "#   source venv/bin/activate\n"
+                     "#   pip install dtcontrol\n"
+    );
+    auto start = result.find("START") + 5;
+    auto end = result.find("END");
+    const std::string jsonStringOfDT = result.substr(start, end - start);
+    return jsonStringOfDT;
+}
+
+template<typename StateType, typename ValueType>
+DecisionTreeHeuristic<StateType, ValueType>* BasicLearningConfigHeadstart<StateType, ValueType>::getNewDT(std::string const& someString, bool const& fromJson) {
+   return new DecisionTreeHeuristic<StateType, ValueType>(someString, &(brtdpInformation->getExplorationInformation()), decisionEpsilon ,fromJson);
+}
+
+
+template<typename StateType, typename ValueType>
+std::string BasicLearningConfigHeadstart<StateType, ValueType>::getModelName() const {
+    return brtdpInformation->getModelName();
+}
+
+template class BasicLearningConfigHeadstart<uint32_t, double>;
+}
+}
+}

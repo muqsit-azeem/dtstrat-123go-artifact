@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+
+<!--
+This file is part of BenchExec, a framework for reliable benchmarking:
+https://github.com/sosy-lab/benchexec
+
+SPDX-FileCopyrightText: 2007-2020 Dirk Beyer <https://www.sosy-lab.org>
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE benchmark PUBLIC "+//IDN sosy-lab.org//DTD BenchExec benchmark 2.3//EN" "https://www.sosy-lab.org/benchexec/benchmark-2.3.dtd">
+<!-- Example file for benchmark definition for BenchExec
+     with dummy tool that simply returns random answers.
+     No resource limits are specified. -->
+<benchmark displayName="Modest" tool=".modest" timelimit="1h" memlimit="8 GB" cpuCores="2">
+  
+  <rundefinition name="lss">
+    <option>modes</option>
+    <option name="-M">MDP</option>
+    <option name="-W">0.01</option>
+    <option name="-C">0.99</option>
+    <option name="--lss"></option>
+    <option name="Smart">10000</option>
+  </rundefinition>
+  <rundefinition name="random">
+    <option>modes</option>
+    <option name="-M">MDP</option>
+    <option name="--resolver">strict</option>
+    <option name="--cycle-bound">1000</option>
+    <option name="--runs">1000</option>
+    <option name="-L">1000</option>
+    <option>--collect-schedulers</option>    
+  </rundefinition>
+
+  <rundefinition name="uniform">
+    <option>modes</option>
+    <option name="-M">MDP</option>
+    <option name="--resolver">uniform</option>    
+    <option name="--runs">1000</option>    
+  </rundefinition>
+
+
+  <!-- <tasks> defines a set of tasks:
+       we define three sets of some arbitrary example files here. -->
+  <tasks name="pnueli-zuck">
+    <include>../task-yml/pnueli-zuck*.jani.yml</include>
+  </tasks>
+  <tasks name="zeroconf-deadline_min">
+    <include>../task-yml/zeroconf_dl.deadline_min.*.jani.yml</include>
+  </tasks>
+  <tasks name="zeroconf-deadline_max">
+    <include>../task-yml/zeroconf_dl.deadline_max.*.jani.yml</include>
+  </tasks>
+  <tasks name="philosophers">
+    <include>../task-yml/philosophers.*.jani.yml</include>
+  </tasks>
+  <tasks name="mer">
+    <include>../task-yml/mer*.jani.yml</include>
+  </tasks>
+  <tasks name="firewire_dl">
+    <include>../task-yml/firewire_dl*.jani.yml</include>
+  </tasks>
+  <tasks name="consensus-c2">
+    <include>../task-yml/consensus.c2*.jani.yml</include>
+  </tasks>
+  <tasks name="consensus-disagree">
+    <include>../task-yml/consensus.disagree*.jani.yml</include>
+  </tasks>
+  <tasks name="csm-all_before_max">
+    <include>../task-yml/csma.all_before_max*.jani.yml</include>
+  </tasks>
+  <tasks name="csm-all_before_min">
+    <include>../task-yml/csma.all_before_min*.jani.yml</include>
+  </tasks>
+  <tasks name="csma-some_before">
+    <include>../task-yml/csma.some_before*.jani.yml</include>
+  </tasks>
+
+  <columns>
+    <column name="distribution">distribution</column>
+    <column name="distribution-mean">distribution-mean</column>
+    <column name="distribution-var">distribution-var</column>
+    <column name="distribution-maxv">distribution-maxv</column>
+    <column name="distribution-minv">distribution-minv</column>
+    <column name="distribution-coeff-var">distribution-coeff-var</column>
+    <column name="probability">probability</column>
+  </columns>
+</benchmark>

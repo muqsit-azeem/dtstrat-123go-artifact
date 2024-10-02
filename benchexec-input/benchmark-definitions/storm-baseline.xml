@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<!--
+This file is part of BenchExec, a framework for reliable benchmarking:
+https://github.com/sosy-lab/benchexec
+
+SPDX-FileCopyrightText: 2007-2020 Dirk Beyer <https://www.sosy-lab.org>
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE benchmark PUBLIC "+//IDN sosy-lab.org//DTD BenchExec benchmark 2.3//EN" "https://www.sosy-lab.org/benchexec/benchmark-2.3.dtd">
+<!-- Example file for benchmark definition for BenchExec
+     with dummy tool that simply returns random answers.
+     No resource limits are specified. -->
+<benchmark displayName="Storm" tool=".storm" timelimit="1h" memlimit="8 GB" cpuCores="2">
+  <rundefinition name="sparse-engine">
+    <option name="--engine">sparse</option>
+  </rundefinition>
+  <rundefinition name="hybrid-engine">
+    <option name="--engine">hybrid</option>
+  </rundefinition>
+  <rundefinition name="dd-to-sparse-engine">
+    <option name="--engine">dd-to-sparse</option>
+  </rundefinition>
+  <rundefinition name="dd-engine">
+    <option name="--engine">dd</option>
+  </rundefinition>
+
+  <tasks name="pnueli-zuck">
+    <include>../task-yml/pnueli-zuck*.prism.yml</include>
+  </tasks>
+  <tasks name="zeroconf-deadline_min">
+    <include>../task-yml/zeroconf_dl.deadline_min.*.prism.yml</include>
+  </tasks>
+  <tasks name="zeroconf-deadline_max">
+    <include>../task-yml/zeroconf_dl.deadline_max.*.prism.yml</include>
+  </tasks>
+  <tasks name="philosophers">
+    <include>../task-yml/philosophers.*.prism.yml</include>
+  </tasks>
+  <tasks name="mer">
+    <include>../task-yml/mer*.prism.yml</include>
+  </tasks>
+  <tasks name="firewire_dl">
+    <include>../task-yml/firewire_dl*.prism.yml</include>
+  </tasks>
+  <tasks name="consensus-c2">
+    <include>../task-yml/consensus.c2*.prism.yml</include>
+  </tasks>
+  <tasks name="consensus-disagree">
+    <include>../task-yml/consensus.disagree*.prism.yml</include>
+  </tasks>
+  <tasks name="csm-all_before_max">
+    <include>../task-yml/csma.all_before_max*.prism.yml</include>
+  </tasks>
+  <tasks name="csm-all_before_min">
+    <include>../task-yml/csma.all_before_min*.prism.yml</include>
+  </tasks>
+  <tasks name="csma-some_before">
+    <include>../task-yml/csma.some_before*.prism.yml</include>
+  </tasks>
+
+  <columns>
+    <column name="probability">probability</column>
+  </columns>
+</benchmark>

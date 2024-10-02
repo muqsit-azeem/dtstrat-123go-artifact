@@ -1,0 +1,3 @@
+mdp-models/**/*.prism
+mdp-models/**/*.props
+benchexec-input/**/*.yml

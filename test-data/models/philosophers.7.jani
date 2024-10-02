@@ -1,0 +1,4465 @@
+{
+    "actions": [
+        {
+            "name": "shared"
+        },
+        {
+            "name": "two"
+        }
+    ],
+    "automata": [
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 0",
+                                    "ref": "p1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p1 = 10)",
+                        "exp": {
+                            "left": "p1",
+                            "op": "=",
+                            "right": 10
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 0",
+                                    "ref": "p1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p1 = 0)",
+                        "exp": {
+                            "left": "p1",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 1",
+                                    "ref": "p1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p1 = 0)",
+                        "exp": {
+                            "left": "p1",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 2",
+                                    "ref": "p1",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 3",
+                                    "ref": "p1",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p1 = 1)",
+                        "exp": {
+                            "left": "p1",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 4",
+                                    "ref": "p1",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p1 = 2) & lfree(p2))",
+                        "exp": {
+                            "left": {
+                                "left": "p1",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p2"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 2",
+                                    "ref": "p1",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p1 = 2) & !(lfree(p2)))",
+                        "exp": {
+                            "left": {
+                                "left": "p1",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p2"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 5",
+                                    "ref": "p1",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p1 = 3) & rfree(p7))",
+                        "exp": {
+                            "left": {
+                                "left": "p1",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p7"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 3",
+                                    "ref": "p1",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p1 = 3) & !(rfree(p7)))",
+                        "exp": {
+                            "left": {
+                                "left": "p1",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p7"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 8",
+                                    "ref": "p1",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p1 = 4) & rfree(p7))",
+                        "exp": {
+                            "left": {
+                                "left": "p1",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p7"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 6",
+                                    "ref": "p1",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p1 = 4) & !(rfree(p7)))",
+                        "exp": {
+                            "left": {
+                                "left": "p1",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p7"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 8",
+                                    "ref": "p1",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p1 = 5) & lfree(p2))",
+                        "exp": {
+                            "left": {
+                                "left": "p1",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p2"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 7",
+                                    "ref": "p1",
+                                    "value": 7
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p1 = 5) & !(lfree(p2)))",
+                        "exp": {
+                            "left": {
+                                "left": "p1",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p2"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 1",
+                                    "ref": "p1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p1 = 6)",
+                        "exp": {
+                            "left": "p1",
+                            "op": "=",
+                            "right": 6
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 1",
+                                    "ref": "p1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p1 = 7)",
+                        "exp": {
+                            "left": "p1",
+                            "op": "=",
+                            "right": 7
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 9",
+                                    "ref": "p1",
+                                    "value": 9
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p1 = 8)",
+                        "exp": {
+                            "left": "p1",
+                            "op": "=",
+                            "right": 8
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 10",
+                                    "ref": "p1",
+                                    "value": 10
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p1 = 9)",
+                        "exp": {
+                            "left": "p1",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 11",
+                                    "ref": "p1",
+                                    "value": 11
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p1 = 9)",
+                        "exp": {
+                            "left": "p1",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 0",
+                                    "ref": "p1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p1 = 11)",
+                        "exp": {
+                            "left": "p1",
+                            "op": "=",
+                            "right": 11
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "shared",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 0",
+                                    "ref": "p1",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p1 = 0)",
+                        "exp": {
+                            "left": "p1",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "two",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p1 <- 1",
+                                    "ref": "p1",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p1 = 0)",
+                        "exp": {
+                            "left": "p1",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "phil1",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 0",
+                                    "ref": "p2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p2 = 10)",
+                        "exp": {
+                            "left": "p2",
+                            "op": "=",
+                            "right": 10
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 0",
+                                    "ref": "p2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p2 = 0)",
+                        "exp": {
+                            "left": "p2",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 1",
+                                    "ref": "p2",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p2 = 0)",
+                        "exp": {
+                            "left": "p2",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 2",
+                                    "ref": "p2",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 3",
+                                    "ref": "p2",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p2 = 1)",
+                        "exp": {
+                            "left": "p2",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 4",
+                                    "ref": "p2",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p2 = 2) & lfree(p3))",
+                        "exp": {
+                            "left": {
+                                "left": "p2",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p3"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 2",
+                                    "ref": "p2",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p2 = 2) & !(lfree(p3)))",
+                        "exp": {
+                            "left": {
+                                "left": "p2",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p3"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 5",
+                                    "ref": "p2",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p2 = 3) & rfree(p1))",
+                        "exp": {
+                            "left": {
+                                "left": "p2",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p1"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 3",
+                                    "ref": "p2",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p2 = 3) & !(rfree(p1)))",
+                        "exp": {
+                            "left": {
+                                "left": "p2",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p1"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 8",
+                                    "ref": "p2",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p2 = 4) & rfree(p1))",
+                        "exp": {
+                            "left": {
+                                "left": "p2",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p1"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 6",
+                                    "ref": "p2",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p2 = 4) & !(rfree(p1)))",
+                        "exp": {
+                            "left": {
+                                "left": "p2",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p1"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 8",
+                                    "ref": "p2",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p2 = 5) & lfree(p3))",
+                        "exp": {
+                            "left": {
+                                "left": "p2",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p3"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 7",
+                                    "ref": "p2",
+                                    "value": 7
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p2 = 5) & !(lfree(p3)))",
+                        "exp": {
+                            "left": {
+                                "left": "p2",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p3"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 1",
+                                    "ref": "p2",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p2 = 6)",
+                        "exp": {
+                            "left": "p2",
+                            "op": "=",
+                            "right": 6
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 1",
+                                    "ref": "p2",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p2 = 7)",
+                        "exp": {
+                            "left": "p2",
+                            "op": "=",
+                            "right": 7
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 9",
+                                    "ref": "p2",
+                                    "value": 9
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p2 = 8)",
+                        "exp": {
+                            "left": "p2",
+                            "op": "=",
+                            "right": 8
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 10",
+                                    "ref": "p2",
+                                    "value": 10
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p2 = 9)",
+                        "exp": {
+                            "left": "p2",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 11",
+                                    "ref": "p2",
+                                    "value": 11
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p2 = 9)",
+                        "exp": {
+                            "left": "p2",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 0",
+                                    "ref": "p2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p2 = 11)",
+                        "exp": {
+                            "left": "p2",
+                            "op": "=",
+                            "right": 11
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "shared",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 0",
+                                    "ref": "p2",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p2 = 0)",
+                        "exp": {
+                            "left": "p2",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "two",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p2 <- 1",
+                                    "ref": "p2",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p2 = 0)",
+                        "exp": {
+                            "left": "p2",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "phil2",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 0",
+                                    "ref": "p3",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p3 = 10)",
+                        "exp": {
+                            "left": "p3",
+                            "op": "=",
+                            "right": 10
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 0",
+                                    "ref": "p3",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p3 = 0)",
+                        "exp": {
+                            "left": "p3",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 1",
+                                    "ref": "p3",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p3 = 0)",
+                        "exp": {
+                            "left": "p3",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 2",
+                                    "ref": "p3",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 3",
+                                    "ref": "p3",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p3 = 1)",
+                        "exp": {
+                            "left": "p3",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 4",
+                                    "ref": "p3",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p3 = 2) & lfree(p4))",
+                        "exp": {
+                            "left": {
+                                "left": "p3",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p4"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 2",
+                                    "ref": "p3",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p3 = 2) & !(lfree(p4)))",
+                        "exp": {
+                            "left": {
+                                "left": "p3",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p4"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 5",
+                                    "ref": "p3",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p3 = 3) & rfree(p2))",
+                        "exp": {
+                            "left": {
+                                "left": "p3",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p2"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 3",
+                                    "ref": "p3",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p3 = 3) & !(rfree(p2)))",
+                        "exp": {
+                            "left": {
+                                "left": "p3",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p2"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 8",
+                                    "ref": "p3",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p3 = 4) & rfree(p2))",
+                        "exp": {
+                            "left": {
+                                "left": "p3",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p2"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 6",
+                                    "ref": "p3",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p3 = 4) & !(rfree(p2)))",
+                        "exp": {
+                            "left": {
+                                "left": "p3",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p2"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 8",
+                                    "ref": "p3",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p3 = 5) & lfree(p4))",
+                        "exp": {
+                            "left": {
+                                "left": "p3",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p4"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 7",
+                                    "ref": "p3",
+                                    "value": 7
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p3 = 5) & !(lfree(p4)))",
+                        "exp": {
+                            "left": {
+                                "left": "p3",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p4"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 1",
+                                    "ref": "p3",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p3 = 6)",
+                        "exp": {
+                            "left": "p3",
+                            "op": "=",
+                            "right": 6
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 1",
+                                    "ref": "p3",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p3 = 7)",
+                        "exp": {
+                            "left": "p3",
+                            "op": "=",
+                            "right": 7
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 9",
+                                    "ref": "p3",
+                                    "value": 9
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p3 = 8)",
+                        "exp": {
+                            "left": "p3",
+                            "op": "=",
+                            "right": 8
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 10",
+                                    "ref": "p3",
+                                    "value": 10
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p3 = 9)",
+                        "exp": {
+                            "left": "p3",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 11",
+                                    "ref": "p3",
+                                    "value": 11
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p3 = 9)",
+                        "exp": {
+                            "left": "p3",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 0",
+                                    "ref": "p3",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p3 = 11)",
+                        "exp": {
+                            "left": "p3",
+                            "op": "=",
+                            "right": 11
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "shared",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 0",
+                                    "ref": "p3",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p3 = 0)",
+                        "exp": {
+                            "left": "p3",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "two",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p3 <- 1",
+                                    "ref": "p3",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p3 = 0)",
+                        "exp": {
+                            "left": "p3",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "phil3",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 0",
+                                    "ref": "p4",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p4 = 10)",
+                        "exp": {
+                            "left": "p4",
+                            "op": "=",
+                            "right": 10
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 0",
+                                    "ref": "p4",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p4 = 0)",
+                        "exp": {
+                            "left": "p4",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 1",
+                                    "ref": "p4",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p4 = 0)",
+                        "exp": {
+                            "left": "p4",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 2",
+                                    "ref": "p4",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 3",
+                                    "ref": "p4",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p4 = 1)",
+                        "exp": {
+                            "left": "p4",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 4",
+                                    "ref": "p4",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p4 = 2) & lfree(p5))",
+                        "exp": {
+                            "left": {
+                                "left": "p4",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p5"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 2",
+                                    "ref": "p4",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p4 = 2) & !(lfree(p5)))",
+                        "exp": {
+                            "left": {
+                                "left": "p4",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p5"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 5",
+                                    "ref": "p4",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p4 = 3) & rfree(p3))",
+                        "exp": {
+                            "left": {
+                                "left": "p4",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p3"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 3",
+                                    "ref": "p4",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p4 = 3) & !(rfree(p3)))",
+                        "exp": {
+                            "left": {
+                                "left": "p4",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p3"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 8",
+                                    "ref": "p4",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p4 = 4) & rfree(p3))",
+                        "exp": {
+                            "left": {
+                                "left": "p4",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p3"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 6",
+                                    "ref": "p4",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p4 = 4) & !(rfree(p3)))",
+                        "exp": {
+                            "left": {
+                                "left": "p4",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p3"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 8",
+                                    "ref": "p4",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p4 = 5) & lfree(p5))",
+                        "exp": {
+                            "left": {
+                                "left": "p4",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p5"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 7",
+                                    "ref": "p4",
+                                    "value": 7
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p4 = 5) & !(lfree(p5)))",
+                        "exp": {
+                            "left": {
+                                "left": "p4",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p5"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 1",
+                                    "ref": "p4",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p4 = 6)",
+                        "exp": {
+                            "left": "p4",
+                            "op": "=",
+                            "right": 6
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 1",
+                                    "ref": "p4",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p4 = 7)",
+                        "exp": {
+                            "left": "p4",
+                            "op": "=",
+                            "right": 7
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 9",
+                                    "ref": "p4",
+                                    "value": 9
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p4 = 8)",
+                        "exp": {
+                            "left": "p4",
+                            "op": "=",
+                            "right": 8
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 10",
+                                    "ref": "p4",
+                                    "value": 10
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p4 = 9)",
+                        "exp": {
+                            "left": "p4",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 11",
+                                    "ref": "p4",
+                                    "value": 11
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p4 = 9)",
+                        "exp": {
+                            "left": "p4",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 0",
+                                    "ref": "p4",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p4 = 11)",
+                        "exp": {
+                            "left": "p4",
+                            "op": "=",
+                            "right": 11
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "shared",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 0",
+                                    "ref": "p4",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p4 = 0)",
+                        "exp": {
+                            "left": "p4",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "two",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p4 <- 1",
+                                    "ref": "p4",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p4 = 0)",
+                        "exp": {
+                            "left": "p4",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "phil4",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 0",
+                                    "ref": "p5",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p5 = 10)",
+                        "exp": {
+                            "left": "p5",
+                            "op": "=",
+                            "right": 10
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 0",
+                                    "ref": "p5",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p5 = 0)",
+                        "exp": {
+                            "left": "p5",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 1",
+                                    "ref": "p5",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p5 = 0)",
+                        "exp": {
+                            "left": "p5",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 2",
+                                    "ref": "p5",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 3",
+                                    "ref": "p5",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p5 = 1)",
+                        "exp": {
+                            "left": "p5",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 4",
+                                    "ref": "p5",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p5 = 2) & lfree(p6))",
+                        "exp": {
+                            "left": {
+                                "left": "p5",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p6"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 2",
+                                    "ref": "p5",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p5 = 2) & !(lfree(p6)))",
+                        "exp": {
+                            "left": {
+                                "left": "p5",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p6"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 5",
+                                    "ref": "p5",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p5 = 3) & rfree(p4))",
+                        "exp": {
+                            "left": {
+                                "left": "p5",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p4"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 3",
+                                    "ref": "p5",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p5 = 3) & !(rfree(p4)))",
+                        "exp": {
+                            "left": {
+                                "left": "p5",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p4"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 8",
+                                    "ref": "p5",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p5 = 4) & rfree(p4))",
+                        "exp": {
+                            "left": {
+                                "left": "p5",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p4"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 6",
+                                    "ref": "p5",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p5 = 4) & !(rfree(p4)))",
+                        "exp": {
+                            "left": {
+                                "left": "p5",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p4"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 8",
+                                    "ref": "p5",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p5 = 5) & lfree(p6))",
+                        "exp": {
+                            "left": {
+                                "left": "p5",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p6"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 7",
+                                    "ref": "p5",
+                                    "value": 7
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p5 = 5) & !(lfree(p6)))",
+                        "exp": {
+                            "left": {
+                                "left": "p5",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p6"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 1",
+                                    "ref": "p5",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p5 = 6)",
+                        "exp": {
+                            "left": "p5",
+                            "op": "=",
+                            "right": 6
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 1",
+                                    "ref": "p5",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p5 = 7)",
+                        "exp": {
+                            "left": "p5",
+                            "op": "=",
+                            "right": 7
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 9",
+                                    "ref": "p5",
+                                    "value": 9
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p5 = 8)",
+                        "exp": {
+                            "left": "p5",
+                            "op": "=",
+                            "right": 8
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 10",
+                                    "ref": "p5",
+                                    "value": 10
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p5 = 9)",
+                        "exp": {
+                            "left": "p5",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 11",
+                                    "ref": "p5",
+                                    "value": 11
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p5 = 9)",
+                        "exp": {
+                            "left": "p5",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 0",
+                                    "ref": "p5",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p5 = 11)",
+                        "exp": {
+                            "left": "p5",
+                            "op": "=",
+                            "right": 11
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "shared",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 0",
+                                    "ref": "p5",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p5 = 0)",
+                        "exp": {
+                            "left": "p5",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "two",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p5 <- 1",
+                                    "ref": "p5",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p5 = 0)",
+                        "exp": {
+                            "left": "p5",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "phil5",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 0",
+                                    "ref": "p6",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p6 = 10)",
+                        "exp": {
+                            "left": "p6",
+                            "op": "=",
+                            "right": 10
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 0",
+                                    "ref": "p6",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p6 = 0)",
+                        "exp": {
+                            "left": "p6",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 1",
+                                    "ref": "p6",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p6 = 0)",
+                        "exp": {
+                            "left": "p6",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 2",
+                                    "ref": "p6",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 3",
+                                    "ref": "p6",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p6 = 1)",
+                        "exp": {
+                            "left": "p6",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 4",
+                                    "ref": "p6",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p6 = 2) & lfree(p7))",
+                        "exp": {
+                            "left": {
+                                "left": "p6",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p7"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 2",
+                                    "ref": "p6",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p6 = 2) & !(lfree(p7)))",
+                        "exp": {
+                            "left": {
+                                "left": "p6",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p7"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 5",
+                                    "ref": "p6",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p6 = 3) & rfree(p5))",
+                        "exp": {
+                            "left": {
+                                "left": "p6",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p5"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 3",
+                                    "ref": "p6",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p6 = 3) & !(rfree(p5)))",
+                        "exp": {
+                            "left": {
+                                "left": "p6",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p5"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 8",
+                                    "ref": "p6",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p6 = 4) & rfree(p5))",
+                        "exp": {
+                            "left": {
+                                "left": "p6",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p5"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 6",
+                                    "ref": "p6",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p6 = 4) & !(rfree(p5)))",
+                        "exp": {
+                            "left": {
+                                "left": "p6",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p5"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 8",
+                                    "ref": "p6",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p6 = 5) & lfree(p7))",
+                        "exp": {
+                            "left": {
+                                "left": "p6",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p7"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 7",
+                                    "ref": "p6",
+                                    "value": 7
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p6 = 5) & !(lfree(p7)))",
+                        "exp": {
+                            "left": {
+                                "left": "p6",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p7"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 1",
+                                    "ref": "p6",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p6 = 6)",
+                        "exp": {
+                            "left": "p6",
+                            "op": "=",
+                            "right": 6
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 1",
+                                    "ref": "p6",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p6 = 7)",
+                        "exp": {
+                            "left": "p6",
+                            "op": "=",
+                            "right": 7
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 9",
+                                    "ref": "p6",
+                                    "value": 9
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p6 = 8)",
+                        "exp": {
+                            "left": "p6",
+                            "op": "=",
+                            "right": 8
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 10",
+                                    "ref": "p6",
+                                    "value": 10
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p6 = 9)",
+                        "exp": {
+                            "left": "p6",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 11",
+                                    "ref": "p6",
+                                    "value": 11
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p6 = 9)",
+                        "exp": {
+                            "left": "p6",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 0",
+                                    "ref": "p6",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p6 = 11)",
+                        "exp": {
+                            "left": "p6",
+                            "op": "=",
+                            "right": 11
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "shared",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 0",
+                                    "ref": "p6",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p6 = 0)",
+                        "exp": {
+                            "left": "p6",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "two",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p6 <- 1",
+                                    "ref": "p6",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p6 = 0)",
+                        "exp": {
+                            "left": "p6",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "phil6",
+            "variables": []
+        },
+        {
+            "edges": [
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 0",
+                                    "ref": "p7",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p7 = 10)",
+                        "exp": {
+                            "left": "p7",
+                            "op": "=",
+                            "right": 10
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 0",
+                                    "ref": "p7",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p7 = 0)",
+                        "exp": {
+                            "left": "p7",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 1",
+                                    "ref": "p7",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p7 = 0)",
+                        "exp": {
+                            "left": "p7",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 2",
+                                    "ref": "p7",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        },
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 3",
+                                    "ref": "p7",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l",
+                            "probability": {
+                                "comment": "1/2",
+                                "exp": 0.5
+                            }
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p7 = 1)",
+                        "exp": {
+                            "left": "p7",
+                            "op": "=",
+                            "right": 1
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 4",
+                                    "ref": "p7",
+                                    "value": 4
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p7 = 2) & lfree(p1))",
+                        "exp": {
+                            "left": {
+                                "left": "p7",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p1"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 2",
+                                    "ref": "p7",
+                                    "value": 2
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p7 = 2) & !(lfree(p1)))",
+                        "exp": {
+                            "left": {
+                                "left": "p7",
+                                "op": "=",
+                                "right": 2
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p1"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 5",
+                                    "ref": "p7",
+                                    "value": 5
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p7 = 3) & rfree(p6))",
+                        "exp": {
+                            "left": {
+                                "left": "p7",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p6"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 3",
+                                    "ref": "p7",
+                                    "value": 3
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p7 = 3) & !(rfree(p6)))",
+                        "exp": {
+                            "left": {
+                                "left": "p7",
+                                "op": "=",
+                                "right": 3
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p6"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 8",
+                                    "ref": "p7",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p7 = 4) & rfree(p6))",
+                        "exp": {
+                            "left": {
+                                "left": "p7",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p6"
+                                ],
+                                "function": "rfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 6",
+                                    "ref": "p7",
+                                    "value": 6
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p7 = 4) & !(rfree(p6)))",
+                        "exp": {
+                            "left": {
+                                "left": "p7",
+                                "op": "=",
+                                "right": 4
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p6"
+                                    ],
+                                    "function": "rfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 8",
+                                    "ref": "p7",
+                                    "value": 8
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p7 = 5) & lfree(p1))",
+                        "exp": {
+                            "left": {
+                                "left": "p7",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "args": [
+                                    "p1"
+                                ],
+                                "function": "lfree",
+                                "op": "call"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 7",
+                                    "ref": "p7",
+                                    "value": 7
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "((p7 = 5) & !(lfree(p1)))",
+                        "exp": {
+                            "left": {
+                                "left": "p7",
+                                "op": "=",
+                                "right": 5
+                            },
+                            "op": "∧",
+                            "right": {
+                                "exp": {
+                                    "args": [
+                                        "p1"
+                                    ],
+                                    "function": "lfree",
+                                    "op": "call"
+                                },
+                                "op": "¬"
+                            }
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 1",
+                                    "ref": "p7",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p7 = 6)",
+                        "exp": {
+                            "left": "p7",
+                            "op": "=",
+                            "right": 6
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 1",
+                                    "ref": "p7",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p7 = 7)",
+                        "exp": {
+                            "left": "p7",
+                            "op": "=",
+                            "right": 7
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 9",
+                                    "ref": "p7",
+                                    "value": 9
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p7 = 8)",
+                        "exp": {
+                            "left": "p7",
+                            "op": "=",
+                            "right": 8
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 10",
+                                    "ref": "p7",
+                                    "value": 10
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p7 = 9)",
+                        "exp": {
+                            "left": "p7",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 11",
+                                    "ref": "p7",
+                                    "value": 11
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p7 = 9)",
+                        "exp": {
+                            "left": "p7",
+                            "op": "=",
+                            "right": 9
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 0",
+                                    "ref": "p7",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p7 = 11)",
+                        "exp": {
+                            "left": "p7",
+                            "op": "=",
+                            "right": 11
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "shared",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 0",
+                                    "ref": "p7",
+                                    "value": 0
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p7 = 0)",
+                        "exp": {
+                            "left": "p7",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                },
+                {
+                    "action": "two",
+                    "destinations": [
+                        {
+                            "assignments": [
+                                {
+                                    "comment": "p7 <- 1",
+                                    "ref": "p7",
+                                    "value": 1
+                                }
+                            ],
+                            "location": "l"
+                        }
+                    ],
+                    "guard": {
+                        "comment": "(p7 = 0)",
+                        "exp": {
+                            "left": "p7",
+                            "op": "=",
+                            "right": 0
+                        }
+                    },
+                    "location": "l"
+                }
+            ],
+            "initial-locations": [
+                "l"
+            ],
+            "locations": [
+                {
+                    "name": "l"
+                }
+            ],
+            "name": "phil7",
+            "variables": []
+        }
+    ],
+    "constants": [],
+    "features": [
+        "derived-operators",
+        "functions"
+    ],
+    "functions": [
+        {
+            "body": {
+                "left": {
+                    "left": {
+                        "left": "rfree__param__p7",
+                        "op": "=",
+                        "right": 11
+                    },
+                    "op": "∨",
+                    "right": {
+                        "left": "rfree__param__p7",
+                        "op": "=",
+                        "right": 5
+                    }
+                },
+                "op": "∨",
+                "right": {
+                    "left": {
+                        "left": "rfree__param__p7",
+                        "op": "=",
+                        "right": 7
+                    },
+                    "op": "∨",
+                    "right": {
+                        "left": {
+                            "left": "rfree__param__p7",
+                            "op": "≥",
+                            "right": 0
+                        },
+                        "op": "∧",
+                        "right": {
+                            "left": "rfree__param__p7",
+                            "op": "≤",
+                            "right": 3
+                        }
+                    }
+                }
+            },
+            "name": "rfree",
+            "parameters": [
+                {
+                    "name": "rfree__param__p7",
+                    "type": "int"
+                }
+            ],
+            "type": "bool"
+        },
+        {
+            "body": {
+                "left": {
+                    "left": {
+                        "left": {
+                            "left": "lfree__param__p2",
+                            "op": "≥",
+                            "right": 0
+                        },
+                        "op": "∧",
+                        "right": {
+                            "left": "lfree__param__p2",
+                            "op": "≤",
+                            "right": 4
+                        }
+                    },
+                    "op": "∨",
+                    "right": {
+                        "left": "lfree__param__p2",
+                        "op": "=",
+                        "right": 6
+                    }
+                },
+                "op": "∨",
+                "right": {
+                    "left": "lfree__param__p2",
+                    "op": "=",
+                    "right": 10
+                }
+            },
+            "name": "lfree",
+            "parameters": [
+                {
+                    "name": "lfree__param__p2",
+                    "type": "int"
+                }
+            ],
+            "type": "bool"
+        }
+    ],
+    "jani-version": 1,
+    "name": "philosophers.7",
+    "properties": [
+        {
+            "expression": {
+                "fun": "values",
+                "op": "filter",
+                "states": {
+                    "op": "initial"
+                },
+                "values": {
+                    "exp": {
+                        "left": true,
+                        "op": "U",
+                        "right": {
+                            "left": {
+                                "left": {
+                                    "left": {
+                                        "left": {
+                                            "left": "p7",
+                                            "op": "≥",
+                                            "right": 8
+                                        },
+                                        "op": "∧",
+                                        "right": {
+                                            "left": "p7",
+                                            "op": "≤",
+                                            "right": 9
+                                        }
+                                    },
+                                    "op": "∨",
+                                    "right": {
+                                        "left": {
+                                            "left": "p2",
+                                            "op": "≥",
+                                            "right": 8
+                                        },
+                                        "op": "∧",
+                                        "right": {
+                                            "left": "p2",
+                                            "op": "≤",
+                                            "right": 9
+                                        }
+                                    }
+                                },
+                                "op": "∨",
+                                "right": {
+                                    "left": {
+                                        "left": "p4",
+                                        "op": "≥",
+                                        "right": 8
+                                    },
+                                    "op": "∧",
+                                    "right": {
+                                        "left": "p4",
+                                        "op": "≤",
+                                        "right": 9
+                                    }
+                                }
+                            },
+                            "op": "∨",
+                            "right": {
+                                "left": {
+                                    "left": {
+                                        "left": {
+                                            "left": "p6",
+                                            "op": "≥",
+                                            "right": 8
+                                        },
+                                        "op": "∧",
+                                        "right": {
+                                            "left": "p6",
+                                            "op": "≤",
+                                            "right": 9
+                                        }
+                                    },
+                                    "op": "∨",
+                                    "right": {
+                                        "left": {
+                                            "left": "p1",
+                                            "op": "≥",
+                                            "right": 8
+                                        },
+                                        "op": "∧",
+                                        "right": {
+                                            "left": "p1",
+                                            "op": "≤",
+                                            "right": 9
+                                        }
+                                    }
+                                },
+                                "op": "∨",
+                                "right": {
+                                    "left": {
+                                        "left": {
+                                            "left": "p5",
+                                            "op": "≥",
+                                            "right": 8
+                                        },
+                                        "op": "∧",
+                                        "right": {
+                                            "left": "p5",
+                                            "op": "≤",
+                                            "right": 9
+                                        }
+                                    },
+                                    "op": "∨",
+                                    "right": {
+                                        "left": {
+                                            "left": "p3",
+                                            "op": "≥",
+                                            "right": 8
+                                        },
+                                        "op": "∧",
+                                        "right": {
+                                            "left": "p3",
+                                            "op": "≤",
+                                            "right": 9
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "op": "Pmax"
+                }
+            },
+            "name": "eat"
+        }
+    ],
+    "restrict-initial": {
+        "exp": true
+    },
+    "system": {
+        "elements": [
+            {
+                "automaton": "phil1"
+            },
+            {
+                "automaton": "phil2"
+            },
+            {
+                "automaton": "phil3"
+            },
+            {
+                "automaton": "phil4"
+            },
+            {
+                "automaton": "phil5"
+            },
+            {
+                "automaton": "phil6"
+            },
+            {
+                "automaton": "phil7"
+            }
+        ],
+        "syncs": [
+            {
+                "result": "shared",
+                "synchronise": [
+                    "shared",
+                    "shared",
+                    "shared",
+                    "shared",
+                    "shared",
+                    "shared",
+                    "shared"
+                ]
+            },
+            {
+                "result": "two",
+                "synchronise": [
+                    "two",
+                    "two",
+                    "two",
+                    "two",
+                    "two",
+                    "two",
+                    "two"
+                ]
+            }
+        ]
+    },
+    "type": "mdp",
+    "variables": [
+        {
+            "initial-value": 0,
+            "name": "p1",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 11
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "p2",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 11
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "p3",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 11
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "p4",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 11
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "p5",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 11
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "p6",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 11
+            }
+        },
+        {
+            "initial-value": 0,
+            "name": "p7",
+            "type": {
+                "base": "int",
+                "kind": "bounded",
+                "lower-bound": 0,
+                "upper-bound": 11
+            }
+        }
+    ]
+}
+

@@ -1,0 +1,8 @@
+format_version: '2.0'
+
+input_files: '../models/consensus.5.prism'
+
+options:
+  property_tag: c2
+  property_file: consensus.props
+  constants: K=2

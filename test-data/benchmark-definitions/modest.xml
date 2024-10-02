@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<!--
+This file is part of BenchExec, a framework for reliable benchmarking:
+https://github.com/sosy-lab/benchexec
+
+SPDX-FileCopyrightText: 2007-2020 Dirk Beyer <https://www.sosy-lab.org>
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE benchmark PUBLIC "+//IDN sosy-lab.org//DTD BenchExec benchmark 2.3//EN" "https://www.sosy-lab.org/benchexec/benchmark-2.3.dtd">
+<!-- Example file for benchmark definition for BenchExec
+     with dummy tool that simply returns random answers.
+     No resource limits are specified. -->
+<benchmark displayName="Modest" tool=".modest" timelimit="90s" memlimit="4 GB" cpuCores="2">
+  
+  <rundefinition name="disk">
+    <option>mcsta</option>
+    <option name="-S">disk</option>
+    <option name="--epsilon">0.01</option>
+    <option name="--absolute-epsilon"></option>
+  </rundefinition>
+  <rundefinition name="lss">
+    <option>modes</option>
+    <option name="-M">MDP</option>
+    <option name="-W">0.01</option>
+    <option name="-C">0.99</option>
+    <option name="--lss"></option>
+    <option name="Smart">10000</option>
+  </rundefinition>
+  <rundefinition name="lower-bound">
+    <option>modes</option>
+    <option name="-M">MDP</option>
+    <option name="--lss"></option>
+    <option name="Sequential"></option>
+    <option name="--cycle-bound">1000</option>
+    <option name="--runs">1000</option>
+    <option name="-L">1000</option>
+    <option>--collect-schedulers</option>    
+  </rundefinition>
+
+  <!-- <tasks> defines a set of tasks:
+       we define three sets of some arbitrary example files here. -->
+  <tasks name="test1">
+    <include>../tasks/modest-*.yml</include>
+  </tasks>
+  <columns>
+    <column name="distribution">distribution</column>
+    <column name="probability">probability</column>
+  </columns>
+</benchmark>

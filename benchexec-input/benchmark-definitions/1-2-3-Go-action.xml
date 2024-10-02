@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+
+<!--
+This file is part of BenchExec, a framework for reliable benchmarking:
+https://github.com/sosy-lab/benchexec
+
+SPDX-FileCopyrightText: 2007-2020 Dirk Beyer <https://www.sosy-lab.org>
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE benchmark PUBLIC "+//IDN sosy-lab.org//DTD BenchExec benchmark 2.3//EN" "https://www.sosy-lab.org/benchexec/benchmark-2.3.dtd">
+<!-- Example file for benchmark definition for BenchExec
+     with dummy tool that simply returns random answers.
+     No resource limits are specified. -->
+<benchmark displayName="1-2-3-Go!" tool=".1-2-3-go" timelimit="2h" memlimit="8 GB" cpuCores="2">
+  <rundefinition name="exact">
+    <option name="--buildfull"></option>
+    <option name="--no-simplify"></option>
+    <option name="--evaluationMethod">full</option>
+    <option name="--reachable"></option>
+    <option name="--dtLearning">mlpack</option>
+    <option name="--engine">learning</option>
+  </rundefinition>
+    <rundefinition name="smc">    
+    <option name="--no-simplify"></option>
+    <option name="--evaluationMethod">statistical</option>    
+    <option name="--dtLearning">mlpack</option>
+    <option name="--engine">learning</option>
+    <option name="--pacEpsilon">0.01</option>
+    <option name="--pacDelta">0.01</option>
+  </rundefinition>
+
+  <tasks name="pnueli">
+    <option name="--datafile">dtstrat-input/data-files-action/pnueli-zuck.3%live%%0.csv</option>
+    <include>../action-task-yml/pnueli-zuck*.prism.yml</include>
+  </tasks>
+
+  <tasks name="zeroconf-deadline_max">
+    <option name="--datafile">dtstrat-input/data-files-action/zeroconf_dl.%deadline_max%K%2.csv</option>
+    <include>../action-task-yml/zeroconf_dl.deadline_max*.prism.yml</include>
+  </tasks>
+
+  <tasks name="zeroconf-deadline_min">
+    <option name="--datafile">dtstrat-input/data-files-action/zeroconf_dl.%deadline_min%K%2.csv</option>
+    <include>../action-task-yml/zeroconf_dl.deadline_min*.prism.yml</include>
+  </tasks>
+
+  <tasks name="philosophers">
+    <option name="--datafile">dtstrat-input/data-files-action/philosophers.4%eat%%0.csv</option>
+    <include>../action-task-yml/philosophers*.prism.yml</include>
+  </tasks>
+
+  <tasks name="mer">
+    <option name="--datafile">dtstrat-input/data-files-action/mer%p1%n%1.csv</option>
+    <include>../action-task-yml/mer*.prism.yml</include>
+  </tasks>
+
+  <tasks name="pacman">
+    <option name="--datafile">dtstrat-input/data-files-action/pacman%crash%MAXSTEPS%5.csv</option>
+    <include>../action-task-yml/pacman*.prism.yml</include>
+  </tasks>
+
+  <tasks name="firewire_dl">
+    <option name="--datafile">dtstrat-input/data-files-action/firewire_dl%deadline%delay%3.csv</option>
+    <include>../action-task-yml/firewire_dl*.prism.yml</include>
+  </tasks>
+
+  <tasks name="consensus-c2">
+    <option name="--datafile">dtstrat-input/data-files-action/consensus.2%c2%%%0_1.csv</option>
+    <include>../action-task-yml/consensus.c2*.prism.yml</include>
+  </tasks>
+
+  <tasks name="consensus-disagree">
+    <option name="--datafile">dtstrat-input/data-files-action/consensus.2%disagree%%%0_1.csv</option>
+    <include>../action-task-yml/consensus.disagree*.prism.yml</include>
+  </tasks>
+
+  <tasks name="csm-all_before_max">
+    <option name="--datafile">dtstrat-input/data-files-action/csma.N_2.K_2%all_before_max%%%0_1.csv</option>
+    <include>../action-task-yml/csma.all_before_max*.prism.yml</include>
+  </tasks>
+
+  <!-- TODO CSMA missing because not able to generate csv file-->
+
+  <tasks name="csma-some_before">
+    <option name="--datafile">dtstrat-input/data-files-action/csma.N_2.K_2%some_before%%%0_1.csv</option>
+    <include>../action-task-yml/csma.some_before*.prism.yml</include>
+  </tasks>
+
+  <tasks name="more-tasks-1-pnueli">
+    <option name="--datafile">dtstrat-input/data-files-action/pnueli-zuck.3%live%%0.csv</option>    
+    <include>../action-task-yml/pnueli-zuck.24.prism.yml</include>
+    <include>../action-task-yml/pnueli-zuck.27.prism.yml</include>
+    <include>../action-task-yml/pnueli-zuck.30.prism.yml</include>
+  </tasks>
+  <tasks name="more-tasks-1-philosophers">
+    <option name="--datafile">dtstrat-input/data-files-action/philosophers.4%eat%%0.csv</option>
+    <include>../action-task-yml/philosophers.24.prism.yml</include>
+    <include>../action-task-yml/philosophers.27.prism.yml</include>
+    <include>../action-task-yml/philosophers.30.prism.yml</include>
+  </tasks>
+  <tasks name="more-tasks-1-zeroconf-deadline_max">
+    <option name="--datafile">dtstrat-input/data-files-action/zeroconf_dl.%deadline_max%K%2.csv</option>
+    <include>../action-task-yml/zeroconf_dl.deadline_max.deadline_2000.prism.yml</include>
+    <include>../action-task-yml/zeroconf_dl.deadline_max.deadline_2400.prism.yml</include>
+    <include>../action-task-yml/zeroconf_dl.deadline_max.deadline_2800.prism.yml</include>
+  </tasks>
+
+  <tasks name="more-tasks-1-zeroconf-deadline_min">
+    <option name="--datafile">dtstrat-input/data-files-action/zeroconf_dl.%deadline_min%K%2.csv</option>
+    <include>../action-task-yml/zeroconf_dl.deadline_min.deadline_2000.prism.yml</include>
+    <include>../action-task-yml/zeroconf_dl.deadline_min.deadline_2400.prism.yml</include>
+    <include>../action-task-yml/zeroconf_dl.deadline_min.deadline_2800.prism.yml</include>
+  </tasks>
+
+  <tasks name="more-tasks-1-consensus-c2">
+    <option name="--datafile">dtstrat-input/data-files-action/consensus.2%c2%%%0_1.csv</option>
+    <include>../action-task-yml/consensus.c2.N_6.prism.yml</include>
+    <include>../action-task-yml/consensus.c2.N_7.prism.yml</include>
+  </tasks>
+
+  <tasks name="more-tasks-1-consensus-disagree">
+    <option name="--datafile">dtstrat-input/data-files-action/consensus.2%disagree%%%0_1.csv</option>
+    <include>../action-task-yml/consensus.disagree.N_6.prism.yml</include>
+    <include>../action-task-yml/consensus.disagree.N_7.prism.yml</include>
+  </tasks>
+
+  <tasks name="more-tasks-1-csm-all_before_max">
+    <option name="--datafile">dtstrat-input/data-files-action/csma.N_2.K_2%all_before_max%%%0_1.csv</option>
+    <include>../action-task-yml/csma.all_before_max.N_2.K_11.prism.yml</include>
+    <include>../action-task-yml/csma.all_before_max.N_2.K_12.prism.yml</include>
+    <include>../action-task-yml/csma.all_before_max.N_6.K_2.prism.yml</include>
+    <include>../action-task-yml/csma.all_before_max.N_7.K_2.prism.yml</include>
+  </tasks>
+
+  <!-- TODO CSMA missing because not able to generate csv file-->
+
+  <tasks name="more-tasks-1-csma-some_before">
+    <option name="--datafile">dtstrat-input/data-files-action/csma.N_2.K_2%some_before%%%0_1.csv</option>
+    <include>../action-task-yml/csma.some_before.N_2.K_11.prism.yml</include>
+    <include>../action-task-yml/csma.some_before.N_2.K_12.prism.yml</include>
+    <include>../action-task-yml/csma.some_before.N_6.K_2.prism.yml</include>
+    <include>../action-task-yml/csma.some_before.N_7.K_2.prism.yml</include>
+  </tasks>
+  
+  <columns>
+    <column name="probability">probability</column>
+    <column name="invalid_action_prediction">invalid_action_prediction</column>
+  </columns>
+</benchmark>

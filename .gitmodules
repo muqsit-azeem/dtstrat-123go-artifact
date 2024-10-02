@@ -1,0 +1,7 @@
+[submodule "storm"]
+	path = storm
+	url = https://github.com/moves-rwth/storm.git
+	branch = stable
+[submodule "dtstrat"]
+	path = dtstrat
+	url = https://gitlab.com/live-lab/software/dtstrat.git

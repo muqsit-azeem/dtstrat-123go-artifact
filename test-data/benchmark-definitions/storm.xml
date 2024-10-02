@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<!--
+This file is part of BenchExec, a framework for reliable benchmarking:
+https://github.com/sosy-lab/benchexec
+
+SPDX-FileCopyrightText: 2007-2020 Dirk Beyer <https://www.sosy-lab.org>
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE benchmark PUBLIC "+//IDN sosy-lab.org//DTD BenchExec benchmark 2.3//EN" "https://www.sosy-lab.org/benchexec/benchmark-2.3.dtd">
+<!-- Example file for benchmark definition for BenchExec
+     with dummy tool that simply returns random answers.
+     No resource limits are specified. -->
+<benchmark displayName="Storm" tool=".storm" timelimit="90s" memlimit="4 GB" cpuCores="2">
+  <rundefinition name="sparse-engine">
+    <option name="--engine">sparse</option>
+  </rundefinition>
+  <rundefinition name="hybrid-engine">
+    <option name="--engine">hybrid</option>
+  </rundefinition>
+  <rundefinition name="dd-to-sparse-engine">
+    <option name="--engine">dd-to-sparse</option>
+  </rundefinition>
+  <rundefinition name="dd-engine">
+    <option name="--engine">dd</option>
+  </rundefinition>
+
+  <tasks name="test1">
+    <include>../tasks/*.*.yml</include>
+  </tasks>
+  <columns>
+    <column name="probability">probability</column>
+  </columns>
+</benchmark>

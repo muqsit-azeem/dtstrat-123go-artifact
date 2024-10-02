@@ -1,0 +1,8 @@
+format_version: '2.0'
+
+input_files: '../models/pnueli-zuck.4.prism'
+
+options:
+  property_tag: live
+  property_file: pnueli-zuck.props
+
